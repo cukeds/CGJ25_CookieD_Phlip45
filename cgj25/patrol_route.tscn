@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://patrol_route.gd" id="1_agkw7"]
 
 [node name="PatrolRoute" type="Line2D"]
+default_color = Color(1, 1, 1, 0)
 script = ExtResource("1_agkw7")
