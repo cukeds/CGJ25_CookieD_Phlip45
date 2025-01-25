@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var navigation_agent_2d = $NavigationAgent2D
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 const max_speed = 300.0
 const acc = 10.0
@@ -22,5 +23,8 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, 10*delta)
 
 	navigation_agent_2d.velocity = velocity
+	
+	if velocity != Vector2.ZERO: 
+		animation_tree["parameters/StateMachine/Movement/blend_position"] = velocity
 	# Apply movement
 	position+=velocity * delta
