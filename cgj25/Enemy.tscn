@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dya4tjsg47ccu"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_ehqd1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4e0hm"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3mwb"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wwxlt"]
+size = Vector2(6, 6)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("path_points")]
+script = ExtResource("1_ehqd1")
+path_points = [NodePath("Markers/Path0"), NodePath("Markers/Path1")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_4e0hm")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t3mwb")
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Path0" type="Marker2D" parent="Markers"]
+position = Vector2(-339, 77)
+
+[node name="Sprite2D" type="Sprite2D" parent="Markers/Path0"]
+texture = SubResource("PlaceholderTexture2D_wwxlt")
+
+[node name="Path1" type="Marker2D" parent="Markers"]
+position = Vector2(187, -151)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Markers/Path1"]
+texture = SubResource("PlaceholderTexture2D_wwxlt")
