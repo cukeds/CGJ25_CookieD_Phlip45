@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcp66mcv1c6pm"]
+
+[ext_resource type="Script" path="res://trail.gd" id="1_5s3dt"]
+[ext_resource type="Texture2D" uid="uid://cdmr0c4y0nig5" path="res://Assets/Player/slime_trail.png" id="2_r4vkq"]
+
+[node name="Trail" type="Line2D"]
+width = 0.0
+script = ExtResource("1_5s3dt")
+
+[node name="SplotchTemplate" type="Sprite2D" parent="."]
+texture = ExtResource("2_r4vkq")

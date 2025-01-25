@@ -18,7 +18,7 @@ region = Rect2(64, 0, 64, 64)
 atlas = ExtResource("2_sb6j0")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qdhng"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyhn7"]
 atlas = ExtResource("2_sb6j0")
 region = Rect2(192, 0, 64, 64)
 
@@ -83,7 +83,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ly7t2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qdhng")
+"texture": SubResource("AtlasTexture_eyhn7")
 }],
 "loop": true,
 "name": &"WalkDown",
@@ -331,12 +331,12 @@ transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransi
 graph_offset = Vector2(-182, -29)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_t1qmm"]
-graph_offset = Vector2(-299, 85)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_kvx5q")
 nodes/StateMachine/position = Vector2(20, 140)
 node_connections = [&"output", 0, &"StateMachine"]
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_2ssq3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

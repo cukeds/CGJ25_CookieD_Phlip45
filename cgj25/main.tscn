@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8eheogimrtvo"]
+[gd_scene load_steps=8 format=3 uid="uid://c8eheogimrtvo"]
 
 [ext_resource type="Script" path="res://navigation_region_2d.gd" id="1_hn4hm"]
 [ext_resource type="PackedScene" uid="uid://d0j0hl7yy6pfh" path="res://Enemy.tscn" id="2_aj8ku"]
 [ext_resource type="PackedScene" uid="uid://bc1t540wq57de" path="res://patrol_route.tscn" id="3_qmb0j"]
 [ext_resource type="PackedScene" uid="uid://ccqeqfe0pl6rf" path="res://player.tscn" id="4_g3x4b"]
+[ext_resource type="PackedScene" uid="uid://dcp66mcv1c6pm" path="res://trail.tscn" id="5_frjdt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_narlh"]
 vertices = PackedVector2Array(-451.398, -185.313, 299.781, -284.688, 320.391, 5.78906, 32.0625, 59.3672, -207.023, 162.969, -428.617, 160.109)
@@ -16,6 +17,7 @@ size = Vector2(10, 10)
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.36, 0.36)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(1, -50)
@@ -52,5 +54,8 @@ texture = SubResource("PlaceholderTexture2D_ua5xl")
 points = PackedVector2Array(-228, -149, -229, -247, 91, -251, 80, -103, -229, -101)
 closed = true
 show_line = true
+
+[node name="Trail" parent="." node_paths=PackedStringArray("trail_leaver") instance=ExtResource("5_frjdt")]
+trail_leaver = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("4_g3x4b")]

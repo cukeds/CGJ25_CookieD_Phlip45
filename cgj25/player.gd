@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 
-const max_speed = 300.0
+@export var max_speed = 100.0
 const acc = 10.0
 
 

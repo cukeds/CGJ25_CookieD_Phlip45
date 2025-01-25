@@ -13,7 +13,7 @@ var stuck_cooldown: float = 1
 
 
 func _ready() -> void:
-	var agent_rid: RID = NavigationServer2D.agent_create()
+	var _agent_rid: RID = NavigationServer2D.agent_create()
 	navigation_agent_2d.velocity_computed.connect(_safe_velocity_computed)
 	
 	nav_region_id = nav_region.get_region_rid()
