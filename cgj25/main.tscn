@@ -18,6 +18,7 @@ size = Vector2(20, 20)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(1, -50)
 navigation_polygon = SubResource("NavigationPolygon_narlh")
 script = ExtResource("1_hn4hm")
 
@@ -37,7 +38,7 @@ text = "Do not threaten a cookie 🍪"
 
 [node name="Enemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("path_points", "nav_region")]
 script = ExtResource("1_bvkjk")
-path_points = [NodePath("Path0"), NodePath("Path1")]
+path_points = [NodePath("Markers/Path0"), NodePath("Markers/Path1")]
 nav_region = NodePath("../NavigationRegion2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
@@ -49,8 +50,10 @@ avoidance_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("RectangleShape2D_t3mwb")
 
-[node name="Path0" type="Marker2D" parent="Enemy"]
+[node name="Markers" type="Node2D" parent="Enemy"]
+
+[node name="Path0" type="Marker2D" parent="Enemy/Markers"]
 position = Vector2(-339, 77)
 
-[node name="Path1" type="Marker2D" parent="Enemy"]
-position = Vector2(186, -146)
+[node name="Path1" type="Marker2D" parent="Enemy/Markers"]
+position = Vector2(187, -151)

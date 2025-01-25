@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 var nav_region_id:RID
 var current_target:int = 0
-
+@onready var marker_parent = $Markers
 
 func _ready() -> void:
 	nav_region_id = nav_region.get_region_rid()
@@ -26,3 +26,28 @@ func _physics_process(delta: float) -> void:
 		current_target = (current_target + 1) % path_points.size()
 		navigation_agent_2d.set_target_position(path_points[current_target].position)
 		pass
+
+
+func _input(event):
+	if event.is_action_pressed("add_point"):
+		# Generate a random point within a certain range
+		var random_point = Vector2(
+			randi() % 400 - 200,  # Adjust the range as needed
+			randi() % 400 - 200
+		)
+		var marker = Marker2D.new()
+		marker.global_position = random_point
+		if marker_parent:
+			marker_parent.add_child(marker)
+		else:
+			add_child(marker)
+		
+		path_points.append(marker)
+
+		# If the path_points array was empty, set the new target
+		if path_points.size() == 1:
+			navigation_agent_2d.set_target_position(random_point)
+	if event.is_action_pressed("speed_up"):
+		velocity.x += 10
+		velocity.y += 10
+		
