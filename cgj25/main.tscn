@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cyoqvwwuqxlva"]
+[gd_scene format=3 uid="uid://c8eheogimrtvo"]
 
 [node name="Main" type="Node2D"]
 
@@ -10,3 +10,10 @@ offset_top = 183.0
 offset_right = 243.0
 offset_bottom = 214.0
 text = "Exit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 195.0
+offset_top = 150.0
+offset_right = 419.0
+offset_bottom = 190.0
+text = "Do not threaten a cookie 🍪"
