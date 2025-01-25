@@ -1,8 +1,25 @@
-[gd_scene format=3 uid="uid://c8eheogimrtvo"]
+[gd_scene load_steps=6 format=3 uid="uid://c8eheogimrtvo"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_bvkjk"]
+[ext_resource type="Script" path="res://navigation_region_2d.gd" id="1_hn4hm"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_narlh"]
+vertices = PackedVector2Array(343.57, 5.85938, 271.242, 123.281, -428.656, 159.5, -451.398, -185.313, 300.547, -284.789)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-438, 170, -462, -194, 309, -296, 354, 8, 277, 133)])
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4e0hm"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3mwb"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_narlh")
+script = ExtResource("1_hn4hm")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 206.0
@@ -17,3 +34,23 @@ offset_top = 150.0
 offset_right = 419.0
 offset_bottom = 190.0
 text = "Do not threaten a cookie 🍪"
+
+[node name="Enemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("path_points", "nav_region")]
+script = ExtResource("1_bvkjk")
+path_points = [NodePath("Path0"), NodePath("Path1")]
+nav_region = NodePath("../NavigationRegion2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+texture = SubResource("PlaceholderTexture2D_4e0hm")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
+avoidance_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("RectangleShape2D_t3mwb")
+
+[node name="Path0" type="Marker2D" parent="Enemy"]
+position = Vector2(-339, 77)
+
+[node name="Path1" type="Marker2D" parent="Enemy"]
+position = Vector2(186, -146)
