@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc1t540wq57de"]
+
+[ext_resource type="Script" path="res://patrol_route.gd" id="1_agkw7"]
+
+[node name="PatrolRoute" type="Line2D"]
+script = ExtResource("1_agkw7")

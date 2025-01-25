@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8eheogimrtvo"]
+[gd_scene load_steps=6 format=3 uid="uid://c8eheogimrtvo"]
 
 [ext_resource type="Script" path="res://navigation_region_2d.gd" id="1_hn4hm"]
 [ext_resource type="PackedScene" uid="uid://dya4tjsg47ccu" path="res://Enemy.tscn" id="2_aj8ku"]
+[ext_resource type="PackedScene" uid="uid://bc1t540wq57de" path="res://patrol_route.tscn" id="3_qmb0j"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_narlh"]
 vertices = PackedVector2Array(-451.398, -185.313, 299.781, -284.688, 320.391, 5.78906, 32.0625, 59.3672, -207.023, 162.969, -428.617, 160.109)
@@ -34,8 +35,9 @@ offset_right = 419.0
 offset_bottom = 190.0
 text = "Do not threaten a cookie 🍪"
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("nav_region") instance=ExtResource("2_aj8ku")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("nav_region", "patrol_route") instance=ExtResource("2_aj8ku")]
 nav_region = NodePath("../NavigationRegion2D")
+patrol_route = NodePath("../PatrolRoute")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-338, 78)
@@ -44,3 +46,6 @@ texture = SubResource("PlaceholderTexture2D_ua5xl")
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(187, -154)
 texture = SubResource("PlaceholderTexture2D_ua5xl")
+
+[node name="PatrolRoute" parent="." instance=ExtResource("3_qmb0j")]
+points = PackedVector2Array(-228, -149, -168, -233, 97, -209, 72, -123, -225, -96)
