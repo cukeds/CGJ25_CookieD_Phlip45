@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dya4tjsg47ccu"]
+[gd_scene load_steps=4 format=3 uid="uid://d0j0hl7yy6pfh"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_ehqd1"]
 
@@ -14,7 +14,13 @@ script = ExtResource("1_ehqd1")
 texture = SubResource("PlaceholderTexture2D_4e0hm")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+path_max_distance = 500.0
+simplify_path = true
 avoidance_enabled = true
+radius = 25.0
+time_horizon_agents = 2.0
+time_horizon_obstacles = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_t3mwb")

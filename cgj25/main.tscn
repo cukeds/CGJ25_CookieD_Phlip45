@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8eheogimrtvo"]
+[gd_scene load_steps=9 format=3 uid="uid://c8eheogimrtvo"]
 
 [ext_resource type="Script" path="res://navigation_region_2d.gd" id="1_hn4hm"]
-[ext_resource type="PackedScene" uid="uid://dya4tjsg47ccu" path="res://Enemy.tscn" id="2_aj8ku"]
-[ext_resource type="PackedScene" uid="uid://bc1t540wq57de" path="res://patrol_route.tscn" id="3_qmb0j"]
+[ext_resource type="PackedScene" uid="uid://d0j0hl7yy6pfh" path="res://Enemy.tscn" id="2_aj8ku"]
+[ext_resource type="PackedScene" path="res://patrol_route.tscn" id="3_qmb0j"]
+[ext_resource type="Script" path="res://player.gd" id="4_kfl7e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_narlh"]
 vertices = PackedVector2Array(-451.398, -185.313, 299.781, -284.688, 320.391, 5.78906, 32.0625, 59.3672, -207.023, 162.969, -428.617, 160.109)
@@ -11,6 +12,12 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-438, 170, -462, -194, 
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ua5xl"]
 size = Vector2(10, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ubv1y"]
+radius = 25.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c5sv1"]
+size = Vector2(50, 50)
 
 [node name="Main" type="Node2D"]
 
@@ -48,4 +55,18 @@ position = Vector2(187, -154)
 texture = SubResource("PlaceholderTexture2D_ua5xl")
 
 [node name="PatrolRoute" parent="." instance=ExtResource("3_qmb0j")]
-points = PackedVector2Array(-228, -149, -168, -233, 97, -209, 72, -123, -225, -96)
+points = PackedVector2Array(-228, -149, -229, -247, 91, -251, 80, -103, -229, -101)
+closed = true
+show_line = true
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("4_kfl7e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_ubv1y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = SubResource("PlaceholderTexture2D_c5sv1")
+
+[node name="NavigationAgent2D" type="NavigationObstacle2D" parent="Player"]
+radius = 20.0
