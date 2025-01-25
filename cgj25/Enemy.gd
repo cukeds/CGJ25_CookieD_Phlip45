@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 			current_target = (current_target + 1) % patrol_route_points.size()
 			if current_target == 0 && !patrol_route.closed:
 				reverse_route = !reverse_route
-				current_target = patrol_route_points.size() - 2
+				current_target = patrol_route_points.size() - 1
 		
 		navigation_agent_2d.set_target_position(patrol_route_points[current_target])
 

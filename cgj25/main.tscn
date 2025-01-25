@@ -17,7 +17,7 @@ size = Vector2(10, 10)
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.36, 0.36)
+zoom = Vector2(0.5, 0.5)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(1, -50)
@@ -51,8 +51,7 @@ position = Vector2(187, -154)
 texture = SubResource("PlaceholderTexture2D_ua5xl")
 
 [node name="PatrolRoute" parent="." instance=ExtResource("3_qmb0j")]
-points = PackedVector2Array(-228, -149, -229, -247, 91, -251, 80, -103, -229, -101)
-closed = true
+points = PackedVector2Array(-465, -176, -229, -247, 91, -251, 80, -103, -229, -101)
 show_line = true
 
 [node name="Trail" parent="." node_paths=PackedStringArray("trail_leaver") instance=ExtResource("5_frjdt")]
