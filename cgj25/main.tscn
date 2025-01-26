@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8eheogimrtvo"]
+[gd_scene load_steps=9 format=3 uid="uid://c8eheogimrtvo"]
 
 [ext_resource type="Script" path="res://navigation_region_2d.gd" id="1_hn4hm"]
 [ext_resource type="PackedScene" uid="uid://d0j0hl7yy6pfh" path="res://Enemy.tscn" id="2_aj8ku"]
 [ext_resource type="PackedScene" path="res://patrol_route.tscn" id="3_qmb0j"]
 [ext_resource type="PackedScene" uid="uid://ccqeqfe0pl6rf" path="res://player.tscn" id="4_g3x4b"]
 [ext_resource type="PackedScene" path="res://trail.tscn" id="5_frjdt"]
-[ext_resource type="Script" path="res://hole.gd" id="6_katdw"]
+[ext_resource type="PackedScene" uid="uid://d2e6n820tojbq" path="res://hole.tscn" id="6_bibcw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_narlh"]
 vertices = PackedVector2Array(-451.398, -185.313, 299.781, -284.688, 320.391, 5.78906, 32.0625, 59.3672, -207.023, 162.969, -428.617, 160.109)
@@ -14,12 +14,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-438, 170, -462, -194, 
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ua5xl"]
 size = Vector2(10, 10)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ciyxf"]
-size = Vector2(50, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4m3p"]
-size = Vector2(51, 49)
 
 [node name="Main" type="Node2D"]
 
@@ -58,7 +52,7 @@ position = Vector2(187, -154)
 texture = SubResource("PlaceholderTexture2D_ua5xl")
 
 [node name="PatrolRoute" parent="." instance=ExtResource("3_qmb0j")]
-points = PackedVector2Array(-465, -176, -229, -247, 91, -251, 80, -103, -229, -101)
+points = PackedVector2Array(-465, -176, -229, -247, -184.73, -247.553, 91, -251, 80, -103, -229, -101)
 show_line = true
 
 [node name="Trail" parent="." node_paths=PackedStringArray("trail_leaver") instance=ExtResource("5_frjdt")]
@@ -66,15 +60,5 @@ trail_leaver = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("4_g3x4b")]
 
-[node name="Hole" type="Area2D" parent="."]
-position = Vector2(-189, -243)
-script = ExtResource("6_katdw")
-
-[node name="Sprite2D" type="Sprite2D" parent="Hole"]
-position = Vector2(0, -1)
-texture = SubResource("PlaceholderTexture2D_ciyxf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hole"]
-shape = SubResource("RectangleShape2D_r4m3p")
-
-[connection signal="body_entered" from="Hole" to="Enemy" method="_on_hole_body_entered"]
+[node name="Hole" parent="." instance=ExtResource("6_bibcw")]
+position = Vector2(-137, -193)
