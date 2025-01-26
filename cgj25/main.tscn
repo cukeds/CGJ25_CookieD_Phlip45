@@ -62,3 +62,5 @@ trail_leaver = NodePath("../Player")
 
 [node name="Hole" parent="." instance=ExtResource("6_bibcw")]
 position = Vector2(-137, -193)
+
+[connection signal="body_entered" from="Hole" to="Enemy" method="_on_hole_body_entered"]
