@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var nav_region:NavigationRegion2D
 @export var patrol_route: PatrolRoute
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
+
 var nav_region_id:RID
 var current_target:int = 0
 var speed_max:float = 500
@@ -68,4 +69,7 @@ func _process(_delta: float) -> void:
 func _safe_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity
 	current_safe_velocity = safe_velocity
-	
+
+func _on_hole_body_entered(body):
+	if body == self:
+		queue_free()
